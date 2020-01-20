@@ -1,21 +1,27 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {renderRoutes} from 'react-router-config';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
+import { useMainRoutes } from '../../contexts';
 
-const Root = ({route}) => (
-  <div>
-    <h1>Root</h1>
-    <ul>
-      <li>
-        <Link to="/"> Home</Link>
-      </li>
-      <li>
-        <Link to="/child/1"> Child 1 (slow component)</Link>
-      </li>
-    </ul>
-    {/* child routes won't render without this */}
-    {renderRoutes(route.routes)}
-  </div>
-);
+const Root = ({route}) => {
+  const {routes} = useMainRoutes();
+  return (
+    <Fragment>
+      <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6 shadow-md">
+        <ul className="flex">
+          {routes.map( (item, index) => (
+            <li key={index} className="mr-6">
+              <NavLink className="text-blue-500 hover:text-blue-800" to={item.path}>
+                {item.title}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+        {/* child routes won't render without this */}
+      </nav>
+      <div>{renderRoutes(route.routes)}</div>
+    </Fragment>
+  );
+};
 
 export default Root;
