@@ -11,7 +11,7 @@ const Root = ({route}) => {
         <ul className="flex">
           {routes.map( (item, index) => (
             <li key={index} className="mr-6">
-              <NavLink className="text-blue-500 hover:text-blue-800" to={item.path}>
+              <NavLink className="text-white hover:text-white" to={item.path}>
                 {item.title}
               </NavLink>
             </li>

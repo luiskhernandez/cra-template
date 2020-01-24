@@ -19,13 +19,13 @@ const navRoutes = [
     path: '/child/3',
   },
   {
-    title: 'App',
+    title: 'App render',
     path: '/app',
   },
 ];
 const Loading = () => <div>Loading</div>;
 export default function App() {
-  const [routesTemp, setRoutes] = React.useState(routes);
+  const [routesTemp] = React.useState(routes);
   const [navConfig, setNavConfig] = React.useState(navRoutes);
   const addRoute = () => {
     const index = navConfig.length;

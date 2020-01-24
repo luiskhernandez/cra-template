@@ -1,6 +1,6 @@
 import React from 'react';
 
-const slowComponent = path => {
+export const slowComponent = path => {
   return new Promise(resolve => {
     setTimeout(() => resolve(import(`${path}`)), 1000);
   });
